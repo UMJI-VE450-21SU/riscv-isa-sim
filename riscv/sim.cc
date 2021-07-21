@@ -170,6 +170,7 @@ void sim_t::main()
 
   while (!done())
   {
+  //  printf("main loop\n");
     if (debug || ctrlc_pressed)
       interactive();
     else

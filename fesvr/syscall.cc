@@ -163,6 +163,9 @@ syscall_t::syscall_t(htif_t* htif)
   table[1039] = &syscall_t::sys_lstat;
   table[2011] = &syscall_t::sys_getmainvars;
 
+  // self defined syscalls
+  table[2012] = &syscall_t::sys_printstr;
+
   register_command(0, std::bind(&syscall_t::handle_syscall, this, _1), "syscall");
 
   int stdin_fd = dup(0), stdout_fd0 = dup(1), stdout_fd1 = dup(1);
@@ -208,6 +211,7 @@ void syscall_t::handle_syscall(command_t cmd)
 
 reg_t syscall_t::sys_exit(reg_t code, reg_t a1, reg_t a2, reg_t a3, reg_t a4, reg_t a5, reg_t a6)
 {
+  // See how the htif main loop ends
   htif->exitcode = code << 1 | 1;
   return 0;
 }
@@ -239,6 +243,10 @@ reg_t syscall_t::sys_pread(reg_t fd, reg_t pbuf, reg_t len, reg_t off, reg_t a4,
 
 reg_t syscall_t::sys_write(reg_t fd, reg_t pbuf, reg_t len, reg_t a3, reg_t a4, reg_t a5, reg_t a6)
 {
+  //printf("sys_write\n");
+  char tbuf[100];
+  //getcwd(tbuf, sizeof tbuf);
+  //printf("cwd: %s\n", tbuf);
   std::vector<char> buf(len);
   memif->read(pbuf, len, &buf[0]);
   reg_t ret = sysret_errno(write(fds.lookup(fd), &buf[0], len));
@@ -327,9 +335,12 @@ reg_t syscall_t::sys_statx(reg_t fd, reg_t pname, reg_t len, reg_t flags, reg_t 
 
 reg_t syscall_t::sys_openat(reg_t dirfd, reg_t pname, reg_t len, reg_t flags, reg_t mode, reg_t a5, reg_t a6)
 {
+  //printf("openat\n");
   std::vector<char> name(len);
   memif->read(pname, len, &name[0]);
+  //printf("file is %s\n", &name[0]);
   int fd = sysret_errno(AT_SYSCALL(openat, dirfd, &name[0], flags, mode));
+  //printf("get fd %d\n", fd);
   if (fd < 0)
     return sysret_errno(-1);
   return fds.alloc(fd);
@@ -445,6 +456,15 @@ reg_t syscall_t::sys_chdir(reg_t path, reg_t a1, reg_t a2, reg_t a3, reg_t a4, r
   return sysret_errno(chdir(buf.data()));
 }
 
+reg_t syscall_t::sys_printstr(reg_t str, reg_t a1, reg_t a2, reg_t a3, reg_t a4, reg_t a5, reg_t a6){
+  char c = -1;
+  unsigned i = 0;
+  while ((c = memif->read_uint8(str + i++)) != 0) {
+    printf("%c", c);
+  }
+  return 0;
+}
+
 void syscall_t::dispatch(reg_t mm)
 {
   target_endian<reg_t> magicmem[8];
@@ -500,3 +520,4 @@ void syscall_t::set_chroot(const char* where)
 
   chroot = buf2;
 }
+

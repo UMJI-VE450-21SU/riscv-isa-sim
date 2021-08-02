@@ -1492,6 +1492,7 @@ reg_t processor_t::get_csr(int which, insn_t insn, bool write, bool peek)
       ret((VU.vxsat << VCSR_VXSAT_SHIFT) | (VU.vxrm << VCSR_VXRM_SHIFT));
     case CSR_INSTRET:
     case CSR_CYCLE:
+     // printf("CSR_CYCLE illegal\n");
       if (!ctr_ok)
         goto throw_illegal;
       if (!ctr_v_ok)
@@ -1502,6 +1503,7 @@ reg_t processor_t::get_csr(int which, insn_t insn, bool write, bool peek)
       ret(state.minstret);
     case CSR_INSTRETH:
     case CSR_CYCLEH:
+     // printf("CSR_CYCLE illegal\n");
       if (!ctr_ok || xlen != 32)
         goto throw_illegal;
       if (!ctr_v_ok)

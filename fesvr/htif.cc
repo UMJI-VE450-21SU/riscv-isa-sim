@@ -188,6 +188,10 @@ void htif_t::stop()
     sigs.close();
   }
 
+  // TEST: can we read out contents?
+  unsigned long a;
+  mem.read(0x10000000, sizeof (unsigned long), &a);
+
   stopped = true;
 }
 
@@ -214,6 +218,7 @@ int htif_t::run()
       idle();
   }
 
+  // READNOTE: the exitcode is the payload, and its last bit is 0 if not exit, and is 1 if exit
   while (!signal_exit && exitcode == 0)
   {
     if (auto tohost = from_target(mem.read_uint64(tohost_addr))) {

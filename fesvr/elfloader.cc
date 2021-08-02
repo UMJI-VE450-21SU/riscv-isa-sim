@@ -88,8 +88,9 @@ std::map<std::string, uint64_t> load_elf(const char* fn, memif_t* memif, reg_t* 
     memif->set_target_endianness(memif_endianness_little);
     if (IS_ELF32(*eh64))
       LOAD_ELF(Elf32_Ehdr, Elf32_Phdr, Elf32_Shdr, Elf32_Sym, from_le);
-    else
+    else {
       LOAD_ELF(Elf64_Ehdr, Elf64_Phdr, Elf64_Shdr, Elf64_Sym, from_le);
+    }
   } else {
 #ifndef RISCV_ENABLE_DUAL_ENDIAN
     throw std::invalid_argument("Specified ELF is big endian.  Configure with --enable-dual-endian to enable support");

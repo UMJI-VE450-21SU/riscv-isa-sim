@@ -209,6 +209,7 @@ float32_t f32_sub( float32_t, float32_t );
 float32_t f32_max( float32_t, float32_t );
 float32_t f32_min( float32_t, float32_t );
 float32_t f32_mul( float32_t, float32_t );
+float32_t f32_approxmul( float32_t, float32_t ); /* VE450 */
 float32_t f32_mulAdd( float32_t, float32_t, float32_t );
 float32_t f32_div( float32_t, float32_t );
 float32_t f32_rem( float32_t, float32_t );

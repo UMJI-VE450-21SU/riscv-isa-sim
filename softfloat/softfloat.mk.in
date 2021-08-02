@@ -80,6 +80,7 @@ softfloat_c_srcs = \
 	f32_lt_quiet.c \
 	f32_mulAdd.c \
 	f32_mul.c \
+	f32_approxmul.c  \
 	f32_rem.c \
 	f32_roundToInt.c \
 	f32_sqrt.c \

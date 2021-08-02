@@ -216,6 +216,7 @@ riscv_insn_ext_f = \
 	fmin_s \
 	fmsub_s \
 	fmul_s \
+	fmula_s \
 	fmv_w_x \
 	fmv_x_w \
 	fnmadd_s \

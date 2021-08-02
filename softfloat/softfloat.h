@@ -210,6 +210,7 @@ float32_t f32_max( float32_t, float32_t );
 float32_t f32_min( float32_t, float32_t );
 float32_t f32_mul( float32_t, float32_t );
 float32_t f32_approxmul( float32_t, float32_t ); /* VE450 */
+float32_t f32_approxdiv( float32_t, float32_t ); /* VE450 */
 float32_t f32_mulAdd( float32_t, float32_t, float32_t );
 float32_t f32_div( float32_t, float32_t );
 float32_t f32_rem( float32_t, float32_t );
@@ -250,8 +251,10 @@ float64_t f64_sub( float64_t, float64_t );
 float64_t f64_max( float64_t, float64_t );
 float64_t f64_min( float64_t, float64_t );
 float64_t f64_mul( float64_t, float64_t );
+float64_t f64_approxmul( float64_t, float64_t );
 float64_t f64_mulAdd( float64_t, float64_t, float64_t );
 float64_t f64_div( float64_t, float64_t );
+float64_t f64_approxdiv( float64_t, float64_t );
 float64_t f64_rem( float64_t, float64_t );
 float64_t f64_sqrt( float64_t );
 bool f64_eq( float64_t, float64_t );

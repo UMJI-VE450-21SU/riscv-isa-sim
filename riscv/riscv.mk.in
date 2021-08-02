@@ -207,6 +207,7 @@ riscv_insn_ext_f = \
 	fcvt_w_s \
 	fcvt_wu_s \
 	fdiv_s \
+	fdiva_s \
 	feq_s \
 	fle_s \
 	flt_s \
@@ -243,6 +244,7 @@ riscv_insn_ext_d = \
 	fcvt_w_d \
 	fcvt_wu_d \
 	fdiv_d \
+	fdiva_d \
 	feq_d \
 	fld \
 	fle_d \
@@ -252,6 +254,7 @@ riscv_insn_ext_d = \
 	fmin_d \
 	fmsub_d \
 	fmul_d \
+	fmula_d \
 	fmv_d_x \
 	fmv_x_d \
 	fnmadd_d \

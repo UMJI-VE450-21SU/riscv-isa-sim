@@ -681,6 +681,7 @@ disassembler_t::disassembler_t(int xlen)
   DEFINE_FRTYPE(fmul_s);
   DEFINE_FRTYPE(fmula_s); /* VE450 */
   DEFINE_FRTYPE(fdiv_s);
+  DEFINE_FRTYPE(fdiva_s);
   DEFINE_FR1TYPE(fsqrt_s);
   DEFINE_FRTYPE(fmin_s);
   DEFINE_FRTYPE(fmax_s);
@@ -712,7 +713,9 @@ disassembler_t::disassembler_t(int xlen)
   DEFINE_FRTYPE(fadd_d);
   DEFINE_FRTYPE(fsub_d);
   DEFINE_FRTYPE(fmul_d);
+  DEFINE_FRTYPE(fmula_d);
   DEFINE_FRTYPE(fdiv_d);
+  DEFINE_FRTYPE(fdiva_d);
   DEFINE_FR1TYPE(fsqrt_d);
   DEFINE_FRTYPE(fmin_d);
   DEFINE_FRTYPE(fmax_d);

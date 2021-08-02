@@ -81,6 +81,7 @@ softfloat_c_srcs = \
 	f32_mulAdd.c \
 	f32_mul.c \
 	f32_approxmul.c  \
+	f32_approxdiv.c  \
 	f32_rem.c \
 	f32_roundToInt.c \
 	f32_sqrt.c \
@@ -110,6 +111,8 @@ softfloat_c_srcs = \
 	f64_lt_quiet.c \
 	f64_mulAdd.c \
 	f64_mul.c \
+	f64_approxmul.c \
+	f64_approxdiv.c \
 	f64_rem.c \
 	f64_roundToInt.c \
 	f64_sqrt.c \

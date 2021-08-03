@@ -182,14 +182,17 @@ riscv_insn_ext_c = \
 
 riscv_insn_ext_m = \
 	div \
+	diva \
 	divu \
 	divuw \
 	divw \
 	mul \
+	mula \
 	mulh \
 	mulhsu \
 	mulhu \
 	mulw \
+	mulwa \
 	rem \
 	remu \
 	remuw \

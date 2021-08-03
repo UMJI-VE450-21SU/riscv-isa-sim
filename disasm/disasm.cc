@@ -589,10 +589,12 @@ disassembler_t::disassembler_t(int xlen)
   DEFINE_RTYPE(or);
   DEFINE_RTYPE(and);
   DEFINE_RTYPE(mul);
+  DEFINE_RTYPE(mula);
   DEFINE_RTYPE(mulh);
   DEFINE_RTYPE(mulhu);
   DEFINE_RTYPE(mulhsu);
   DEFINE_RTYPE(div);
+  DEFINE_RTYPE(diva);
   DEFINE_RTYPE(divu);
   DEFINE_RTYPE(rem);
   DEFINE_RTYPE(remu);
@@ -602,6 +604,7 @@ disassembler_t::disassembler_t(int xlen)
   DEFINE_RTYPE(srlw);
   DEFINE_RTYPE(sraw);
   DEFINE_RTYPE(mulw);
+  DEFINE_RTYPE(mulwa);
   DEFINE_RTYPE(divw);
   DEFINE_RTYPE(divuw);
   DEFINE_RTYPE(remw);
